@@ -1,0 +1,52 @@
+{
+  "name": "login-api",
+  "version": "0.0.1",
+  "description": "An API built to use mongodb and JWT for User Authentication",
+  "main": "server.js",
+  "scripts": {
+    "babel": "babel app -d dist && babel client -d views",
+    "build": "npm run pack && npm run babel",
+    "pack": "webpack --config webpack.config.js",
+    "serve": "node dist/server.js",
+    "start": "npm run build && nodemon dist/server.js",
+    "test": "mocha --require @babel/register --exit",
+    "react": "webpack-dev-server --open"
+  },
+  "author": "Thageesan Thanabalasingam",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/polyfill": "^7.4.3",
+    "bcryptjs": "2.4.3",
+    "body-parser": "^1.18.3",
+    "cors": "2.8.5",
+    "express": "4.16.4",
+    "history": "^4.9.0",
+    "jsonwebtoken": "8.5.1",
+    "mongoose": "5.5.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-redux": "^7.0.1",
+    "react-router-dom": "^5.0.0",
+    "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^4.2.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.4.3",
+    "@babel/core": "7.4.3",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "7.4.0",
+    "assert": "1.4.1",
+    "babel-loader": "^8.0.5",
+    "css-loader": "^2.1.1",
+    "html-webpack-plugin": "^3.2.0",
+    "mocha": "6.1.2",
+    "nodemon": "1.18.11",
+    "request": "^2.88.0",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.3.1"
+  }
+}
