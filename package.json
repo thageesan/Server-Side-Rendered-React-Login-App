@@ -6,11 +6,11 @@
   "scripts": {
     "babel": "babel app -d dist && babel client -d views",
     "build": "npm run pack && npm run babel",
-    "pack": "webpack --config webpack.config.js",
+    "pack": "webpack --config webpack.config.js --env prod",
     "serve": "node dist/server.js",
     "start": "npm run build && nodemon dist/server.js",
     "test": "mocha --require @babel/register --exit",
-    "react": "webpack-dev-server --open"
+    "react": "webpack-dev-server --open --env dev"
   },
   "author": "Thageesan Thanabalasingam",
   "license": "ISC",
