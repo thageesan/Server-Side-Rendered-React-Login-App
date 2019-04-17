@@ -2,25 +2,20 @@ import '@babel/polyfill';
 import bodyParser from 'body-parser';
 import express from 'express';
 import cors from 'cors';
-import {
-    validateToken
-} from './services/jwt';
+import { validateToken } from './services/jwt';
 import {
     authenticate,
     userRouter
 } from './user/user.controller'
 import userService  from './user/user.service'
 
-const template = require('./../views/template')
-const path = require('path');
+import path from 'path';
+import template from './../views/template';
+import serverSideRender from './../views/server';
+
 let initialState = {};
 
-//SSR function import
-const ssr = require('./../views/server');
-
 export const app = express();
-
-
 
 // Serving static files
 app.use('/assets', express.static(path.resolve(__dirname, '../assets')));
@@ -32,7 +27,7 @@ app.get('/api/login', (req, res) => {
     const {
         preloadedState,
         content
-    } = ssr(initialState)
+    } = serverSideRender(initialState)
     const response = template("Server Rendered Page", preloadedState, content)
     res.setHeader('Cache-Control', 'assets, max-age=604800')
     res.send(response);
