@@ -52,7 +52,7 @@ describe('User management & auth', () => {
             password: '123456'
         };
         const token = await userService.authenticate(user)
-        assert.notEqual(typeof (token), 'undefined');
+        assert.notEqual('undefined', typeof (token));
     });
     it('should not authenticate a user and not return a token', async () => {
         const user = {
@@ -60,7 +60,7 @@ describe('User management & auth', () => {
             password: '12345'
         };
         const token = await userService.authenticate(user)
-        assert.equal(typeof (token), 'undefined');
+        assert.equal('undefined', typeof (token));
     });
 });
 
@@ -94,14 +94,14 @@ describe('Api endpoint tests and route protection', () => {
     it('should return 200', (done) => {
         request.get(`${url}/ping`, (err, res) => {
             if (err) throw err;
-            assert.equal(200, res.statusCode);
+            assert.equal(res.statusCode, 200);
             done();
         });
     });
     it('should not allow access to user and user child routes', (done) => {
         request.get(`${url}/users`, (err, res) => {
             if (err) throw err;
-            assert.equal(401, res.statusCode);
+            assert.equal(res.statusCode, 401);
             done();
         });
     });
@@ -113,10 +113,10 @@ describe('Api endpoint tests and route protection', () => {
             },
             json: true
         };
-        request.post(`${url}/login`, params, (err, res) => {
+        request.post(`${url}/auth`, params, (err, res) => {
             if (err) throw err;
-            assert.equal(200, res.statusCode);
-            assert.equal(true, res && res.body && res.body.token && typeof (res.body.token) === 'string')
+            assert.equal(res.statusCode, 200);
+            assert.equal(res && res.body && res.body.token && typeof (res.body.token) === 'string', true)
             token = res.body.token
             done();
         });
@@ -129,9 +129,9 @@ describe('Api endpoint tests and route protection', () => {
             },
             json: true
         };
-        request.post(`${url}/login`, params, (err, res) => {
+        request.post(`${url}/auth`, params, (err, res) => {
             if (err) throw err;
-            assert.equal(400, res.statusCode);
+            assert.equal(res.statusCode, 400);
             done();
         });
     });
@@ -142,8 +142,8 @@ describe('Api endpoint tests and route protection', () => {
             }
         }, (err, res) => {
             if (err) throw err;
-            assert.equal(200, res.statusCode);
-            assert.equal('thageesan', JSON.parse(res.body)['username'])
+            assert.equal(res.statusCode, 200);
+            assert.equal(JSON.parse(res.body)['username'], 'thageesan')
             done();
         });
     });

@@ -1,6 +1,6 @@
 # Login App
 
-This project is built using React and Node with mongodb as the database.  The react is server side rendered.  You will be able to access the application by running the development server.
+This project is built using React and Node with mongodb as the database.  The react is server side rendered.  You will be able to access the application by running the development server.  To test the login mechanism with user data uncomment lines in the app listen callback function found in the `server.js`.
 
 ## Install
 Run `npm run install` to install all the packages required to build, deploy & test the application.

@@ -9,6 +9,7 @@ import {
 } from './user/user.controller'
 import userService  from './user/user.service'
 
+// const template = require('./../views/template')
 import path from 'path';
 import template from './../views/template';
 import serverSideRender from './../views/server';
@@ -45,23 +46,24 @@ app.use('/api/users', validateToken, userRouter)
 const port = process.env.NODE_ENV === 'production' ? (process.env.PORT || 8000) : 8000;
 const server = app.listen(port, async function () {
     console.log('Server listening on port ' + port);
-    await userService.removeAll();
-    const userData = [{
-            username: 'thageesan',
-            password: '123456'
-        },
-        {
-            username: 'bob',
-            password: '123456'
-        },
-        {
-            username: 'snow',
-            password: '123456'
-        }
-    ];
-    for (const data of userData) {
-        await userService.create(data);
-    }
+    // uncommment below code to test login mech since no way to add users at the moment
+    // await userService.removeAll();
+    // const userData = [{
+    //         username: 'thageesan',
+    //         password: '123456'
+    //     },
+    //     {
+    //         username: 'bob',
+    //         password: '123456'
+    //     },
+    //     {
+    //         username: 'snow',
+    //         password: '123456'
+    //     }
+    // ];
+    // for (const data of userData) {
+    //     await userService.create(data);
+    // }
 });
 
 export default server;
