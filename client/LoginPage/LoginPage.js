@@ -98,7 +98,7 @@ class LoginPage extends React.Component {
                     <Input placeholder="password" type="password" className="form-control" name="password" value={this.props.user.password} onChange={this.handleChange.bind(this)} />
                         {this.props.user.error && 
                         <ErrorLabel>{this.props.user.error}</ErrorLabel>}
-                    <Button user={this.props.user} name="Login"/>
+                    <Button disabled={!this.props.user.username || !this.props.user.password} name="Login"/>
                 </Form>
             </Container>
         )
