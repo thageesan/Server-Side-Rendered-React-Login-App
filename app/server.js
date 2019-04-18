@@ -9,7 +9,6 @@ import {
 } from './user/user.controller'
 import userService  from './user/user.service'
 
-// const template = require('./../views/template')
 import path from 'path';
 import template from './../views/template';
 import serverSideRender from './../views/server';
