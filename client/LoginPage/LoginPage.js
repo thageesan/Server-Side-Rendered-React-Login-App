@@ -47,20 +47,16 @@ export const ButtonStyle = styled.button`
     }
 `;
 
-
-
+export const ErrorLabel = styled.label`
+    color: red;
+`;
 
 class LoginPage extends React.Component {
 
     constructor(props) {
         super(props);
-
         // reset login status
         this.props.dispatch(userActions.logout());
-
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-
     }
 
     handleChange(e) {
@@ -97,12 +93,12 @@ class LoginPage extends React.Component {
         return (
             <Container>
                 <Title>Login</Title>
-                <Form name="form" onSubmit={this.handleSubmit}>
-                    <Input placeholder="username" type="text" name="username" value={this.props.user.username} onChange={this.handleChange} />
-                    <Input placeholder="password" type="password" className="form-control" name="password" value={this.props.user.password} onChange={this.handleChange} />
+                <Form name="form" onSubmit={this.handleSubmit.bind(this)}>
+                    <Input placeholder="username" type="text" name="username" value={this.props.user.username} onChange={this.handleChange.bind(this)} />
+                    <Input placeholder="password" type="password" className="form-control" name="password" value={this.props.user.password} onChange={this.handleChange.bind(this)} />
                         {this.props.user.error && 
-                        <label>{this.props.user.error}</label>}
-                    <Button />
+                        <ErrorLabel>{this.props.user.error}</ErrorLabel>}
+                    <Button name="Login"/>
                 </Form>
             </Container>
         )

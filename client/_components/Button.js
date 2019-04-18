@@ -5,14 +5,13 @@ import { ButtonStyle } from './../LoginPage'
 
 class Button extends React.Component {
 
-
     constructor(props) {
         super(props);
     }
 
     render() {
         return (
-            <ButtonStyle type="submit" disabled={!this.props.user.username || !this.props.user.password}>Login</ButtonStyle>
+            <ButtonStyle type="submit" disabled={!this.props.user.username || !this.props.user.password}>{this.props.name}</ButtonStyle>
         );
     }
     
