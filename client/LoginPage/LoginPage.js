@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import styled from 'styled-components'
-import { Button } from './../_components';
+import Button from './../_components/Button';
 import React from 'react';
 import { userActions } from './../_actions';
 import { userService } from './../_services';
@@ -98,7 +98,7 @@ class LoginPage extends React.Component {
                     <Input placeholder="password" type="password" className="form-control" name="password" value={this.props.user.password} onChange={this.handleChange.bind(this)} />
                         {this.props.user.error && 
                         <ErrorLabel>{this.props.user.error}</ErrorLabel>}
-                    <Button name="Login"/>
+                    <Button user={this.props.user} name="Login"/>
                 </Form>
             </Container>
         )
